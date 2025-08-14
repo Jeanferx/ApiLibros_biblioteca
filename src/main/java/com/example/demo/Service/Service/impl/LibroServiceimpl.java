@@ -12,14 +12,12 @@ public class LibroServiceimpl implements LibroService{
 	}
 
 	@Override
-	public LibroModel postLibro(int libroID) {
-		// TODO Auto-generated method stub
+	public LibroModel postLibro(LibroModel libro) {
 		return null;
 	}
 
 	@Override
-	public LibroModel putLibro(int libroID) {
-		// TODO Auto-generated method stub
+	public LibroModel putLibro(int libroID,LibroModel libro) {
 		return null;
 	}
 
