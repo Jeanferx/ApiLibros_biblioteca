@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.Dao.LibroDao;
 import com.example.demo.Dao.Dao.Jpa.Entity.LibroEntity;
 import com.example.demo.Dao.Dao.Jpa.Repository.LibroRepository;
+import com.example.demo.dao.jpa.entity.UserEntity;
 import com.example.demo.model.LibroModel;
 @Service
 public class LibroDaoImpl implements LibroDao {
@@ -32,20 +33,41 @@ public class LibroDaoImpl implements LibroDao {
 	}
 
 	@Override
-	public LibroModel postLibro(int LibroID) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public LibroModel putLibro(int LibroID) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public LibroModel deleteLibro(int LibroID) {
-		// TODO Auto-generated method stub
+		Optional<LibroEntity>e=libroRepository.findById(LibroID);
+		LibroModel model=new LibroModel();
+		if(e.isPresent()) {
+			libroRepository.deleteById(LibroID);
+		}
+		return null;
+	}
+
+	@Override
+	public LibroModel postLibro(LibroModel libro) {
+		LibroEntity Entity=new LibroEntity();
+		Entity.setAutor(libro.getAutor());
+		Entity.setDisponible(libro.getDisponible());
+		Entity.setFecha(libro.getFecha());
+		Entity.setName(libro.getName());
+		Entity=libroRepository.save(Entity);
+		libro.setId(Entity.getId());
+		return libro;
+		
+	}
+
+	@Override
+	public LibroModel putLibro(int libroID, LibroModel libro) {
+		Optional<LibroEntity>e=libroRepository.findById(libroID);
+		if(e.isPresent()) {
+			LibroEntity Entity=e.get();
+			Entity.setAutor(libro.getAutor());
+			Entity.setDisponible(libro.getDisponible());
+			Entity.setFecha(libro.getFecha());
+			Entity.setName(libro.getName());
+			libroRepository.save(Entity);
+			Entity.setId(libroID);
+			return libro;
+		}
 		return null;
 	}
 
