@@ -32,7 +32,6 @@ Forma parte del sistema modular junto con los microservicios de usuarios y sucur
 
 | Método | Endpoint | Descripción |
 |--------|-----------|-------------|
-| GET | `/api/libros` | Lista todos los libros |
 | GET | `/api/libros/{id}` | Busca libro por ID |
 | POST | `/api/libros` | Agrega nuevo libro |
 | PUT | `/api/libros/{id}` | Actualiza libro existente |
