@@ -1,18 +1,13 @@
 package com.example.demo.Dao.Dao.impl;
 
 import java.util.Optional;
-
-import org.aspectj.apache.bcel.Repository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import com.example.demo.Dao.LibroDao;
 import com.example.demo.Dao.Dao.Jpa.Entity.LibroEntity;
 import com.example.demo.Dao.Dao.Jpa.Repository.LibroRepository;
-import com.example.demo.dao.jpa.entity.UserEntity;
 import com.example.demo.model.LibroModel;
-@Service
-public class LibroDaoImpl implements LibroDao {
+public class LibroDaoImpl implements LibroDao{
 	@Autowired
 	private LibroRepository libroRepository;
 	@Override
@@ -27,7 +22,7 @@ public class LibroDaoImpl implements LibroDao {
 			model.setId(e.get().getId());
 		}
 		else {
-			String errorMsg = "The user with id %s was not found";
+			String errorMsg = "The usera with id %s was not found";
 		}
 		return model;
 	}
@@ -38,6 +33,9 @@ public class LibroDaoImpl implements LibroDao {
 		LibroModel model=new LibroModel();
 		if(e.isPresent()) {
 			libroRepository.deleteById(LibroID);
+		}
+		else {
+			String errorMsg = "No se elimino";
 		}
 		return null;
 	}
@@ -70,5 +68,5 @@ public class LibroDaoImpl implements LibroDao {
 		}
 		return null;
 	}
-
 }
+
